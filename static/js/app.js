@@ -82,6 +82,18 @@ function buildPlot(ID){
 	    var otu_labels = sampleData[0].otu_labels;
 		console.log(otu_labels);
 
+		// create top ten
+		var topTen = {"sampleValues": [],
+						"otu_ids": [],
+						"otu_labels": []}
+		for (var i = 0; i < 10; i++){
+			topTen.sampleValues.push(sampleValues[i]);
+			topTen.otu_ids.push(otu_ids[i]);
+			topTen.otu_labels.push(otu_labels[i]);			
+		};
+		console.log(topTen);
+
+		// Plot bar chart
 
   	});
 };
