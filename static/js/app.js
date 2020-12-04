@@ -111,19 +111,21 @@ function buildPlot(ID){
 			}
 		};
 
+		console.log("Displaying bar chart");
 		Plotly.newPlot("bar", barData, barLayout);
 
 		// Plot the bubble chart
 
 		var trace2 = {
-			x: sampleValues,
-			y: otu_ids,
+			x: otu_ids,
+			y: sampleValues,
 			text: otu_labels,
 			mode: "markers",
 			type: "scatter",
 			marker: {
 				size: sampleValues,
-				color: otu_ids
+				color: otu_ids,
+				colorscale: "Picnic"
 			}
 		};
 
@@ -133,6 +135,7 @@ function buildPlot(ID){
 			title: "Bubble Chart"
 		};
 
+		console.log("Displaying bubble chart");
 		Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
   	});
