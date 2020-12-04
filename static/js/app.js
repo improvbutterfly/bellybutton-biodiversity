@@ -88,12 +88,30 @@ function buildPlot(ID){
 						"otu_labels": []}
 		for (var i = 0; i < 10; i++){
 			topTen.sampleValues.push(sampleValues[i]);
-			topTen.otu_ids.push(otu_ids[i]);
+			topTen.otu_ids.push(`OTU ${otu_ids[i]}`);
 			topTen.otu_labels.push(otu_labels[i]);			
 		};
 		console.log(topTen);
 
 		// Plot bar chart
+		var trace1 = {
+			x: topTen.sampleValues,
+			y: topTen.otu_ids,
+			text: topTen.otu_labels,
+			type: "bar",
+			orientation: "h"
+		}
+
+		var barData = [trace1];
+
+		var barLayout = {
+			title: `Top Ten OTUs found in ${ID}`,
+			yaxis:{
+				autorange: "reversed"
+			}
+		};
+
+		Plotly.newPlot("bar", barData, barLayout);
 
   	});
 };
