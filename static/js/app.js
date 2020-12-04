@@ -42,13 +42,22 @@ function loadMetadata(ID){
 	dataPromise.then(function(data) {
 		  console.log(data);
 
-	    var metadata = data.metadata.filter(md => md.id === parseInt(ID));
+	    var filteredMetadata = data.metadata.filter(md => md.id === parseInt(ID));
+	    var metadata = filteredMetadata[0];
 
 	    console.log(metadata);
 
-	    // Empty contents of metadata area
+	    // create string with metadata
+	    var mdString = "";
+    	for (key in metadata) {
+    		mdString = mdString.concat(`<strong>${key}:</strong> ${metadata[key]}<br />\n`);
+	    	console.log(`${key}: ${metadata[key]}`)
+		};
+		console.log(mdString);
+
+	    // Update contents of metadata area
 	    d3.select("#sample-metadata")
-	    .html(`ID: ${metadata[0].id}<br />`);
+	    .html(mdString);
 
   	});
 };
@@ -78,7 +87,12 @@ function buildPlot(ID){
 };
 
 // function to call when select option changed
-function optionChanged() {
+function optionChanged(ID) {
+	// update the metadata
+	loadMetadata(ID);
+
+	// Plot the data for the first ID
+	buildPlot(ID);
 
 };
 
