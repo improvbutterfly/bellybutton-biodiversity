@@ -62,26 +62,26 @@ function loadMetadata(ID){
   	});
 };
 
-// function to unpack data
-function unpack(rows, index) {
-	return rows.map(function(row) {
-	    return row[index];
-	});
-};
-
 // function to build the graph
 function buildPlot(ID){
 	console.log(ID);
 	dataPromise.then(function(data) {
 		  console.log(data);
 
-	    var metadata = data.metadata.filter(md => md.id === parseInt(ID));
+	    var sampleData = data.samples.filter(sample => sample.id === ID);
 
-	    console.log(metadata);
-	    //var ids = data.samples.id;
-	    //var endDate = data.dataset.end_date;
-	    //var dates = unpack(data.dataset.data, 0);
-	    //var closingPrices = unpack(data.dataset.data, 4);
+	    console.log(sampleData);
+
+	    // Put all data into variables
+	    var sampleValues = sampleData[0].sample_values;
+	    console.log(sampleValues);
+
+	    var otu_ids = sampleData[0].otu_ids;
+	    console.log(otu_ids);
+
+	    var otu_labels = sampleData[0].otu_labels;
+		console.log(otu_labels);
+
 
   	});
 };
@@ -91,7 +91,7 @@ function optionChanged(ID) {
 	// update the metadata
 	loadMetadata(ID);
 
-	// Plot the data for the first ID
+	// Plot the data for the selected ID
 	buildPlot(ID);
 
 };
