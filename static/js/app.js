@@ -32,6 +32,9 @@ function init() {
 		// Plot the data for the first ID
 		buildPlot(defaultID);
 
+		// Bonus load gauge chart
+		gaugeChart(defaultID);
+
 	});
 
 };
@@ -149,7 +152,10 @@ function optionChanged(ID) {
 	// Plot the data for the selected ID
 	buildPlot(ID);
 
+	// Plot the bonus guage chart
+	gaugeChart(ID);
 };
+
 
 
 init();
