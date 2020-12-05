@@ -3,6 +3,8 @@ Plotting data on belly button biodiversity for the web
 
 For this homework assignment, I had to read data from [samples.json](samples.json) and develop a dashboard for disaplying charts related to the different IDs in the data.
 
+Webpage deployed to [https://improvbutterfly.github.io/bellybutton-biodiversity/](https://improvbutterfly.github.io/bellybutton-biodiversity/)
+
 ## How It Works
 
 I used Plotly to graph the charts, and D3 to display the dropbown menu using the supplied data.
